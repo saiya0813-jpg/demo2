@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>倒计时 · 烟花庆祝</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="fireworks" aria-hidden="true"></canvas>
+
+  <main class="app">
+    <header class="header">
+      <h1>倒计时</h1>
+      <p class="subtitle">设置时间，点击开始，结束时绽放烟花</p>
+    </header>
+
+    <section class="timer-card" id="timerCard">
+      <div class="display" id="display" aria-live="polite">00:00:00</div>
+
+      <fieldset class="time-inputs" id="timeInputs">
+        <legend class="sr-only">设置倒计时</legend>
+        <label>
+          <span>时</span>
+          <input type="number" id="hours" min="0" max="99" value="0" />
+        </label>
+        <span class="colon">:</span>
+        <label>
+          <span>分</span>
+          <input type="number" id="minutes" min="0" max="59" value="5" />
+        </label>
+        <span class="colon">:</span>
+        <label>
+          <span>秒</span>
+          <input type="number" id="seconds" min="0" max="59" value="0" />
+        </label>
+      </fieldset>
+
+      <div class="progress-wrap" aria-hidden="true">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn btn-primary" id="startBtn">开始</button>
+        <button type="button" class="btn btn-secondary" id="pauseBtn" disabled>暂停</button>
+        <button type="button" class="btn btn-ghost" id="resetBtn">重置</button>
+      </div>
+    </section>
+
+    <p class="status" id="status"></p>
+  </main>
+
+  <script src="fireworks.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
