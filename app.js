@@ -98,7 +98,12 @@ function syncInputsFromMs(ms) {
 }
 
 function tick(now) {
-  if (!lastTick) lastTick = now;
+  if (!lastTick) {
+    lastTick = now;
+    intervalId = requestAnimationFrame(tick);
+    return;
+  }
+
   const delta = now - lastTick;
   lastTick = now;
 
@@ -108,7 +113,10 @@ function tick(now) {
   if (remainingMs <= 0) {
     stopInterval();
     onFinish();
+    return;
   }
+
+  intervalId = requestAnimationFrame(tick);
 }
 
 function stopInterval() {
